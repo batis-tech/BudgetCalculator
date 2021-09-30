@@ -1,0 +1,6 @@
+@import'../../styles.scss';
+.input{
+  &:hover{
+    transition: border-color 0.2 ease-out
+  }
+}
