@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Inject } from '@angular/core';
+import { BudgetItem } from "../../shared/models/budget-item.model";
+import { MatDialogRef, MAT_DIALOG_DATA} from  '@angular/material/dialog';
 @Component({
   selector: 'app-edit-item-model',
   templateUrl: './edit-item-model.component.html',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditItemModelComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<EditItemModelComponent>,
+    @Inject(MAT_DIALOG_DATA) public item: BudgetItem) {}
 
-  ngOnInit(): void {
+  ngOnInit(){
+  }
+  onSubmitted(updatedItem: BudgetItem){
+    this.dialogRef.close(updatedItem);
   }
 
 }
